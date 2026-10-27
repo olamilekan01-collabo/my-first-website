@@ -1,41 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Praise's Website</title>
-  <style>
-    body {
-      background-color: #101827;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    h1 {
-      color: #38bdf8;
-    }
-
-    p {
-      font-size: 18px;
-    }
-
-    button {
-      background-color: #38bdf8;
-      color: #101827;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Own Brand</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5ff;
+  color: #172554;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+.hidden { display: none !important; }
+.blue { color: #2563eb; }
+.auth {
+  max-width: 430px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 28px 22px;
+  background: white;
+}
+.logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: #2563eb;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 35px auto 18px;
+}
+h1, h2 { margin-bottom: 8px; }
+.subtitle { color: #64748b; line-height: 1.5; }
+.field {
+  width: 100%;
+  padding: 15px;
+  margin: 8px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: white;
+}
+.primary {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  background: #2563eb;
+  font-weight: bold;
+  margin-top: 12px;
+}
+.link {
+  color: #2563eb;
+  background: none;
+  border: 0;
+  padding: 10px 3px;
+}
+.app {
+  max-width: 480px;
+  min-height: 100vh;
+  margin: auto;
+  padding-bottom: 88px;
+}
+.top {
+  padding: 22px;
+  background: #2563eb;
+  color: white;
+  border-radius: 0 0 24px 24px;
+}
+.top p { margin-bottom: 0; opacity: .85; }
+.content { padding: 20px; }
+.balance {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  border-radius: 18px;
+  padding: 22px;
+  margin: 16px 0;
+}
+.balance h1 { font-size: 32px; }
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 15px;
+  margin: 12px 0;
+  box-shadow: 0 3px 15px #1e40af0d;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.small { color: #64748b; font-size: 14px; }
+.task-button {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 13px;
+  font-weight: bold;
+}
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  padding: 10px 4px max(10px, env(safe-area-inset-bottom));
+}
+.nav button {
+  flex: 1;
+  border: 0;
+  background: white;
+  color: #64748b;
+  padding: 7px 1px;
+  font-size: 12px;
+}
+.nav button.active { color: #2563eb; font-weight: bold; }
+.nav span { display: block; font-size: 21px; margin-bottom: 4px; }
+.notice { color: #64748b; font-size: 12px; line-height: 1.5; }
+</style>
 </head>
 <body>
-  <h1>Welcome to Praise's Website!</h1>
-  <p>This is my first website. I am learning web development.</p>
-  <button onclick="alert('Welcome to my website!')">
-    Click Me
-  </button>
+
+<section class="auth" id="authScreen">
+  <div class="logo">M</div>
+  <h1 style="text-align:center">My Own Brand</h1>
+  <p class="subtitle" style="text-align:center">
+    Your rewards journey starts here.
+  </p>
+
+  <h2 id="authTitle">Create your account</h2>
+  <p class="subtitle" id="authDescription">
+    Register to explore your rewards dashboard.
+  </p>
+
+  <form id="authForm">
+    <input class="field" id="phone" type="tel"
+      placeholder="Phone number" required>
+    <input class="field" id="password" type="password"
+      placeholder="Create a password" minlength="6" required>
+    <input class="field" id="confirmPassword" type="password"
+      placeholder="Confirm password" minlength="6" required>
+    <button class="primary" id="authSubmit" type="submit">
+      Register
+    </button>
+  </form>
+  <p style="text-align:center">
+    <span id="switchText">Already have an account?</span>
+    <button class="link" id="switchAuth" type="button">Log in</button>
+  </p>
+  <p class="notice">
+    Demo only: this page does not create a real account or securely
+    store passwords. Do not enter a real password.
+  </p>
+</section>
+
+<section class="app hidden" id="appScreen">
+  <header class="top">
+    <p>Welcome to</p>
+    <h2>My Own Brand</h2>
+    <p>Your rewards space</p>
+  </header>
+
+  <main class="content">
+    <section id="homePage">
+      <h2>Home</h2>
+      <p class="small">Here is your demo rewards overview.</p>
+      <div class="balance">
+        <p>My demo points</p>
+        <h1><span class="points">0</span> pts</h1>
+        <p>Practice points only — not cash.</p>
+      </div>
+      <div class="card">
+        <h3>Ready to earn points?</h3>
+        <p class="small">Visit Earn to try a sample activity.</p>
+        <button class="primary" onclick="showPage('earn')">
+          Explore activities
+        </button>
+      </div>
+      <div class="card">
+        <h3>My rewards</h3>
+        <p class="small">See your demo points and activity history.</p>
+        <button class="task-button" onclick="showPage('rewards')">
+          View rewards
+        </button>
+      </div>
+    </section>
+
+    <section id="earnPage" class="hidden">
+      <h2>Earn points</h2>
+      <p class="small">Try these sample activities.</p>
+      <div class="card">
+        <div class="row">
+          <div><b>Daily welcome activity</b>
+            <p class="small">Try this demo task once.</p></div>
+          <button class="task-button" id="taskButton"
+            onclick="completeTask()">+10 pts</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>More activities coming soon</h3>
+        <p class="small">Real tasks would need to be connected later.</p>
+      </div>
+    </section>
+
+    <section id="rewardsPage" class="hidden">
+      <h2>My rewards</h2>
+      <div class="balance">
+        <p>Total demo points</p>
+        <h1><span class="points">0</span> pts</h1>
+      </div>
+      <div class="card">
+        <h3>Activity history</h3>
+        <p id="history" class="small">No activities yet.</p>
+      </div>
+      <div class="card">
+        <h3>Withdrawals</h3>
+        <p class="small">
+          Cash withdrawals are not available in this demo.
+        </p>
+        <button class="task-button" onclick="alert('Withdrawal is a demo feature only.')">
+          Withdrawal information
+        </button>
+      </div>
+    </section>
+
+    <section id="minePage" class="hidden">
+      <h2>My account</h2>
+      <div class="card">
+        <p class="small">Phone number</p>
+        <b id="profilePhone">Not set</b>
+      </div>
+      <div class="card">
+        <p class="small">Demo points</p>
+        <h2><span class="points">0</span> pts</h2>
+      </div>
+      <div class="card">
+        <h3>About My Own Brand</h3>
+        <p class="small">
+          A beginner rewards website project. Account details and
+          points are temporary and reset when the page reloads.
+        </p>
+      </div>
+      <button class="primary" onclick="logout()">Log out</button>
+    </section>
+  </main>
+
+  <nav class="nav">
+    <button class="active" data-page="home" onclick="showPage('home')">
+      <span>⌂</span>Home
+    </button>
+    <button data-page="earn" onclick="showPage('earn')">
+      <span>＋</span>Earn
+    </button>
+    <button data-page="rewards" onclick="showPage('rewards')">
+      <span>★</span>Rewards
+    </button>
+    <button data-page="mine" onclick="showPage('mine')">
+      <span>☻</span>Mine
+    </button>
+  </nav>
+</section>
+
+<script>
+let isLogin = false;
+let points = 0;
+let taskDone = false;
+
+const authForm = document.getElementById("authForm");
+const confirmField = document.getElementById("confirmPassword");
+
+document.getElementById("switchAuth").addEventListener("click", function () {
+  isLogin = !isLogin;
+  document.getElementById("authTitle").textContent =
+    isLogin ? "Welcome back" : "Create your account";
+  document.getElementById("authDescription").textContent =
+    isLogin ? "Enter your demo details to continue." :
+    "Register to explore your rewards dashboard.";
+  document.getElementById("authSubmit").textContent =
+    isLogin ? "Log in" : "Register";
+  document.getElementById("switchText").textContent =
+    isLogin ? "New here?" : "Already have an account?";
+  this.textContent = isLogin ? "Register" : "Log in";
+  confirmField.classList.toggle("hidden", isLogin);
+  confirmField.required = !isLogin;
+});
+
+authForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const phone = document.getElementById("phone").value.trim();
+  const password = document.getElementById("password").value;
+  const confirm = confirmField.value;
+
+  if (!isLogin && password !== confirm) {
+    alert("The passwords do not match. Please try again.");
+    return;
+  }
+
+  document.getElementById("profilePhone").textContent = phone;
+  document.getElementById("authScreen").classList.add("hidden");
+  document.getElementById("appScreen").classList.remove("hidden");
+  showPage("home");
+});
+
+function showPage(page) {
+  ["home", "earn", "rewards", "mine"].forEach(function (name) {
+    document.getElementById(name + "Page").classList.toggle(
+      "hidden", name !== page
+    );
+  });
+  document.querySelectorAll(".nav button").forEach(function (button) {
+    button.classList.toggle("active", button.dataset.page === page);
+  });
+  updatePoints();
+}
+
+function completeTask() {
+  if (taskDone) {
+    alert("You have already tried this demo activity.");
+    return;
+  }
+  points += 10;
+  taskDone = true;
+  document.getElementById("taskButton").textContent = "Completed";
+  document.getElementById("taskButton").disabled = true;
+  document.getElementById("history").textContent =
+    "Daily welcome activity: +10 demo points";
+  updatePoints();
+  alert("You earned 10 demo points! These are not real money.");
+}
+
+function updatePoints() {
+  document.querySelectorAll(".points").forEach(function (element) {
+    element.textContent = points;
+  });
+}
+
+function logout() {
+  document.getElementById("appScreen").classList.add("hidden");
+  document.getElementById("authScreen").classList.remove("hidden");
+  authForm.reset();
+  points = 0;
+  taskDone = false;
+  document.getElementById("taskButton").textContent = "+10 pts";
+  document.getElementById("taskButton").disabled = false;
+  document.getElementById("history").textContent = "No activities yet.";
+  updatePoints();
+}
+</script>
 </body>
 </html>
